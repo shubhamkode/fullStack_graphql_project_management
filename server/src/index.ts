@@ -1,16 +1,14 @@
-import { createSchema, createYoga } from "graphql-yoga";
+import { createYoga } from "graphql-yoga";
 import { createServer } from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
+import { schema } from "./schema";
+
 const PORT = process.env.PORT || 8000;
 
-const schema = createSchema({ typeDefs: `type Query {
-    hello: String!
-}`, resolvers: {} });
-
 const main = () => {
-  const yoga = createYoga({ landingPage: false, schema });
+  const yoga = createYoga({ schema });
 
   const server = createServer(yoga);
 

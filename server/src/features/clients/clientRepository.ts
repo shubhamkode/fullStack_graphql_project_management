@@ -43,7 +43,7 @@ const deleteClient = async (clientId: string): Promise<Client> =>
 const getProjectsByClientId = async (clientId: string): Promise<Project[]> =>
   await prisma.project.findMany({ where: { clientId } });
 
-const ClientRepository = {
+export const ClientRepository = {
   getAllClients,
   getClientById,
   createClient,
